@@ -27,7 +27,6 @@ export function App() {
   return (
     <>
       <Home />
-      {/* <div>Hello World</div> */}
       {/* <div><img src={Button} /></div> */}
       {/* <div><img src={Button1} /></div> */}
       {/* <div><img src={Background} /></div> */}
