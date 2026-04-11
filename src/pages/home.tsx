@@ -1,9 +1,10 @@
 import Layout from "./home-layout";
 
-export function Home() {
+
+export function Home({ childeren }: { childeren: React.ReactNode }) {
   return (
     <Layout >
-      <div className="w-full"></div>
+      {childeren}
     </Layout>
   )
 }
