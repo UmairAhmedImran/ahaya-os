@@ -8,7 +8,7 @@ export default function HomeLayout() {
     <SidebarProvider>
       <div className="flex h-screen w-full overflow-hidden ">
         <AppSidebar />
-        <div className="flex flex-col flex-1 overflow-hidden-x p-2">
+        <div className="flex flex-col flex-1 overflow-hidden p-2">
           <Navbar />
           <main className="flex-1 overflow-auto p-4 ">
             <Outlet />

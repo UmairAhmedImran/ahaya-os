@@ -28,20 +28,20 @@ export function DashboardCard() {
   ]
 
   return (
-    <div className="flex flex-col gap-y-4 pt-8 pr-8 sm:flex-row sm:gap-x-8">
-      {allCards.map((item) => (
-        <Card className="w-full">
+    <div className="flex flex-col items-center gap-4 pt-8 px-4 sm:flex-row sm:justify-center sm:items-stretch sm:gap-6">
+      {allCards.map((item, index) => (
+        <Card key={index} className="w-full max-w-sm">
           <CardHeader>
             <CardTitle>
               <img src={item.icon} />
             </CardTitle>
+
             <CardAction>
               <p
                 className={cn(
-                  item.trend > 0 &&
-                    "flex flex-row items-center gap-x-1 rounded-xs bg-green-100 p-1 text-xs text-green-900",
-                  item.trend < 0 &&
-                    "flex flex-row items-center gap-x-1 rounded-xs bg-red-100 p-1 text-xs text-red-900"
+                  "flex items-center gap-1 rounded-xs p-1 text-xs",
+                  item.trend > 0 && "bg-green-100 text-green-900",
+                  item.trend < 0 && "bg-red-100 text-red-900"
                 )}
               >
                 {item.trend > 0 ? (
@@ -53,6 +53,7 @@ export function DashboardCard() {
               </p>
             </CardAction>
           </CardHeader>
+
           <CardContent>
             <div className="pt-2 text-xs font-light">{item.label}</div>
             <div className="pt-1 text-3xl font-semibold tracking-wide">
