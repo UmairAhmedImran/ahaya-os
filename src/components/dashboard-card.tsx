@@ -6,7 +6,6 @@ import { cn } from "@/lib/utils"
 import { TrendingDown, TrendingUp } from "lucide-react"
 
 export function DashboardCard() {
-
   const allCards = [
     {
       icon: DollarIcon,
@@ -29,37 +28,38 @@ export function DashboardCard() {
   ]
 
   return (
-    <div className="flex flex-col sm:flex-row gap-y-4 sm:gap-x-2 pt-12">
+    <div className="flex flex-col gap-y-4 pt-8 pr-8 sm:flex-row sm:gap-x-8">
       {allCards.map((item) => (
-        <Card className="w-full ">
+        <Card className="w-full">
           <CardHeader>
             <CardTitle>
               <img src={item.icon} />
             </CardTitle>
             <CardAction>
-              <p className={cn(
-                item.trend > 0 &&
-                "bg-green-100 text-green-900 p-1 text-xs rounded-xs flex flex-row items-center gap-x-1",
-                item.trend < 0 &&
-                "bg-red-100 text-red-900 p-1 text-xs rounded-xs flex-row flex items-center gap-x-1"
-              )}>
+              <p
+                className={cn(
+                  item.trend > 0 &&
+                    "flex flex-row items-center gap-x-1 rounded-xs bg-green-100 p-1 text-xs text-green-900",
+                  item.trend < 0 &&
+                    "flex flex-row items-center gap-x-1 rounded-xs bg-red-100 p-1 text-xs text-red-900"
+                )}
+              >
                 {item.trend > 0 ? (
-                  <TrendingUp className="size-3 " />
-                ) : <TrendingDown className="size-3 " />}
+                  <TrendingUp className="size-3" />
+                ) : (
+                  <TrendingDown className="size-3" />
+                )}
                 {item.trend}%
               </p>
             </CardAction>
           </CardHeader>
           <CardContent>
-            <div className="pt-2 font-light text-xs">
-              {item.label}
-            </div>
-            <div className="text-3xl font-semibold pt-1 tracking-wide">
+            <div className="pt-2 text-xs font-light">{item.label}</div>
+            <div className="pt-1 text-3xl font-semibold tracking-wide">
               {item.value}
             </div>
           </CardContent>
         </Card>
-
       ))}
     </div>
   )
