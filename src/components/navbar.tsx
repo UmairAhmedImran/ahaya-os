@@ -13,7 +13,7 @@ export function Navbar() {
   const isMobile = useIsMobile()
 
   return (
-    <nav className="flex w-screen h-12 border-b items-center">
+    <nav className="flex h-12 border-b items-center">
       {!isMobile ? (
         <Command className="max-w-sm rounded-lg">
           <CommandInput placeholder="Explore datasets..." />

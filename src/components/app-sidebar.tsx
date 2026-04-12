@@ -10,44 +10,42 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 import logo from "../assets/logo.svg"
-import {
-  ChartColumn,
-  LayoutDashboard,
-  Plus,
-  Proportions,
-  Settings,
-  UsersRound,
-} from "lucide-react"
 import { Separator } from "./ui/separator"
 import { cn } from "@/lib/utils"
 import { useLocation } from "react-router-dom"
+import AnalyticPic from "../assets/Container-1.svg"
+import DashboardPic from "../assets/Container.svg"
+import ReportPic from "../assets/Container-2.svg"
+import UserPic from "../assets/Container-3.svg"
+import SettingPic from "../assets/Container-4.svg"
+import { Plus } from "lucide-react"
 
 export function AppSidebar() {
   const { pathname } = useLocation()
 
   const section = [
     {
-      icon: LayoutDashboard,
+      icon: DashboardPic,
       label: "Dashboard",
       href: "/",
     },
     {
-      icon: ChartColumn,
+      icon: AnalyticPic,
       label: "Analytics",
       href: "/analytics",
     },
     {
-      icon: Proportions,
+      icon: ReportPic,
       label: "Report",
       href: "/report",
     },
     {
-      icon: UsersRound,
+      icon: UserPic,
       label: "User",
       href: "/user",
     },
     {
-      icon: Settings,
+      icon: SettingPic,
       label: "Settings",
       href: "/settings",
     },
@@ -85,7 +83,7 @@ export function AppSidebar() {
                     )}
                   >
                     <a href={item.href}>
-                      <item.icon className="size-5" />
+                      <img src={item.icon} className="size-3.5" />
                       <span className="text-sm font-light tracking-tight">
                         {item.label}
                       </span>
