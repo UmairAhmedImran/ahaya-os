@@ -1,21 +1,27 @@
-# React + TypeScript + Vite + shadcn/ui
+# ahaya-os
 
-This is a template for a new Vite project with React, TypeScript, and shadcn/ui.
+## Getting Started
 
-## Adding components
-
-To add components to your app, run the following command:
+Install [pnpm](https://pnpm.io) if you haven't already:
 
 ```bash
-npx shadcn@latest add button
+npm install -g pnpm
 ```
 
-This will place the ui components in the `src/components` directory.
+Install dependencies:
 
-## Using components
-
-To use the components in your app, import them as follows:
-
-```tsx
-import { Button } from "@/components/ui/button"
+```bash
+pnpm install
 ```
+
+Start the development server:
+
+```bash
+pnpm dev
+```
+
+One Thing to note is that the code has dark theme also but proper styling on it is not done yet. So use "d" to change the theme to light mode.
+
+Things to do: 
+In User page create a button to open a multi step form using zod and maybe react-hook-form. (Task 2)
+Add search functionality to home page and use debounce and abrot.controller logic on it. (Task 3)

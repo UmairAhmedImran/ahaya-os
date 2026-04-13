@@ -5,9 +5,7 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table"
-
 import type { ColumnDef } from "@tanstack/react-table"
-
 import {
   Table,
   TableBody,
@@ -16,6 +14,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import { cn } from "@/lib/utils"
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -33,20 +32,27 @@ export function DataTable<TData, TValue>({
   })
 
   return (
-    <div className="overflow-hidden rounded-md border">
+    <div className="w-full overflow-x-auto">
       <Table>
-        <TableHeader className="bg-accent font-extralight">
+        <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
-            <TableRow key={headerGroup.id}>
+            <TableRow key={headerGroup.id} className="border-b">
               {headerGroup.headers.map((header) => {
+                const metaClassName = header.column.columnDef.meta?.className
                 return (
-                  <TableHead key={header.id} className="font-semibold text-xs">
+                  <TableHead
+                    key={header.id}
+                    className={cn(
+                      "text-xs font-semibold text-muted-foreground uppercase tracking-wide py-3",
+                      metaClassName
+                    )}
+                  >
                     {header.isPlaceholder
                       ? null
                       : flexRender(
-                        header.column.columnDef.header,
-                        header.getContext()
-                      )}
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
                   </TableHead>
                 )
               })}
@@ -59,17 +65,30 @@ export function DataTable<TData, TValue>({
               <TableRow
                 key={row.id}
                 data-state={row.getIsSelected() && "selected"}
+                className="border-b last:border-0 hover:bg-muted/40 transition-colors"
               >
-                {row.getVisibleCells().map((cell) => (
-                  <TableCell key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </TableCell>
-                ))}
+                {row.getVisibleCells().map((cell) => {
+                  const metaClassName = cell.column.columnDef.meta?.className
+                  return (
+                    <TableCell
+                      key={cell.id}
+                      className={cn("py-3", metaClassName)}
+                    >
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
+                    </TableCell>
+                  )
+                })}
               </TableRow>
             ))
           ) : (
             <TableRow>
-              <TableCell colSpan={columns.length} className="h-24 text-center">
+              <TableCell
+                colSpan={columns.length}
+                className="h-24 text-center text-muted-foreground"
+              >
                 No results.
               </TableCell>
             </TableRow>

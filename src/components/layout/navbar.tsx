@@ -1,14 +1,13 @@
-import { Command, CommandInput } from "./ui/command";
-import notificationButton from "../assets/Button.svg"
-import userProfilePic from "../assets/Container-5.svg"
-import { Separator } from "./ui/separator";
-import { useIsMobile } from "@/hooks/use-mobile";
-import sidebarButtonPic from "../assets/Button-1.svg"
-import { useSidebar } from "./ui/sidebar";
-import { Button } from "./ui/button";
+import { Command, CommandInput } from "@/components/ui/command"
+import notificationButton from "@/assets/Button.svg"
+import userProfilePic from "@/assets/Container-5.svg"
+import { Separator } from "@/components/ui/separator"
+import { useIsMobile } from "@/hooks/use-mobile"
+import sidebarButtonPic from "@/assets/Button-1.svg"
+import { useSidebar } from "@/components/ui/sidebar"
+import { Button } from "@/components/ui/button"
 
 export function Navbar() {
-
   const { toggleSidebar } = useSidebar()
   const isMobile = useIsMobile()
 
@@ -35,9 +34,8 @@ export function Navbar() {
             <span className="text-xs font-extralight">Chief Curator</span>
           </div>
         ) : null}
-        <img src={userProfilePic} alt="notification" className="size-10" />
+        <img src={userProfilePic} alt="profile" className="size-10" />
       </div>
     </nav>
-
   )
 }

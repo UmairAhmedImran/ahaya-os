@@ -1,15 +1,15 @@
 import { Route, Routes } from "react-router-dom"
-import HomeLayout from "./pages/home-layout"
-import { DashboardPage } from "@/components/dashboard-page"
-import { AnalyticsPage } from "@/components/analytics-page"
-import { ReportPage } from "@/components/report-page"
-import { UserPage } from "@/components/user-page"
-import { SettingsPage } from "@/components/settings-page"
+import RootLayout from "./pages/root-layout"
+import { DashboardPage } from "@/features/dashboard"
+import { AnalyticsPage } from "@/features/analytics"
+import { ReportPage } from "@/features/reports"
+import { UserPage } from "@/features/users"
+import { SettingsPage } from "@/features/settings"
 
 export function App() {
   return (
     <Routes>
-      <Route element={<HomeLayout />}>
+      <Route element={<RootLayout />}>
         <Route path="/" element={<DashboardPage />} />
         <Route path="/analytics" element={<AnalyticsPage />} />
         <Route path="/report" element={<ReportPage />} />

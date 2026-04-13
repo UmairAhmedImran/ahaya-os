@@ -1,32 +1,32 @@
-import DollarIcon from "../assets/Background.svg"
-import UserIcon from "../assets/Background-1.svg"
-import ConversionIcon from "../assets/Background-2.svg"
-import { Card, CardAction, CardContent, CardHeader, CardTitle } from "./ui/card"
+import DollarIcon from "@/assets/Background.svg"
+import UserIcon from "@/assets/Background-1.svg"
+import ConversionIcon from "@/assets/Background-2.svg"
+import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
 import { TrendingDown, TrendingUp } from "lucide-react"
 
-export function DashboardCard() {
-  const allCards = [
-    {
-      icon: DollarIcon,
-      label: "Total Revenue",
-      value: "$45,231.00",
-      trend: 12.5,
-    },
-    {
-      icon: UserIcon,
-      label: "Action Users",
-      value: "12,842",
-      trend: 8.2,
-    },
-    {
-      icon: ConversionIcon,
-      label: "Conversion Rate",
-      value: "3.4%",
-      trend: -1.4,
-    },
-  ]
+const allCards = [
+  {
+    icon: DollarIcon,
+    label: "Total Revenue",
+    value: "$45,231.00",
+    trend: 12.5,
+  },
+  {
+    icon: UserIcon,
+    label: "Active Users",
+    value: "12,842",
+    trend: 8.2,
+  },
+  {
+    icon: ConversionIcon,
+    label: "Conversion Rate",
+    value: "3.4%",
+    trend: -1.4,
+  },
+]
 
+export function KpiCards() {
   return (
     <div className="flex flex-col items-center gap-4 pt-8 px-4 sm:flex-row sm:justify-center sm:items-stretch sm:gap-6">
       {allCards.map((item, index) => (
@@ -35,7 +35,6 @@ export function DashboardCard() {
             <CardTitle>
               <img src={item.icon} />
             </CardTitle>
-
             <CardAction>
               <p
                 className={cn(
@@ -53,7 +52,6 @@ export function DashboardCard() {
               </p>
             </CardAction>
           </CardHeader>
-
           <CardContent>
             <div className="pt-2 text-xs font-light">{item.label}</div>
             <div className="pt-1 text-3xl font-semibold tracking-wide">
