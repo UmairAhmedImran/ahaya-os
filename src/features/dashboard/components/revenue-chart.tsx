@@ -57,7 +57,7 @@ export function RevenueChart() {
         </div>
 
         <div className="w-full lg:w-1/3">
-          <div className="flex h-full flex-col justify-between rounded-2xl bg-[#3730a3] p-6">
+          <div className="flex min-h-[240px] flex-col justify-between rounded-2xl bg-[#3730a3] p-6 lg:h-full">
             <div className="flex flex-col gap-4">
               <span className="w-fit rounded-md bg-indigo-800 px-3 py-1 text-xs font-semibold text-indigo-200 uppercase">
                 New Insights

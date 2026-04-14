@@ -24,7 +24,7 @@ const ITEMS_PER_PAGE = 8
 
 function ProductCardSkeleton() {
   return (
-    <div className="flex flex-col rounded-2xl bg-white p-4 shadow-sm dark:bg-card">
+    <div className="flex flex-col rounded-2xl bg-white p-4 shadow-sm ">
       <Skeleton className="mb-4 h-40 w-full rounded-lg" />
       <Skeleton className="mb-2 h-4 w-16 rounded-full" />
       <Skeleton className="mb-1 h-4 w-full" />
@@ -320,7 +320,7 @@ export function ProductGrid() {
             {paginatedProducts.map((product) => (
               <div
                 key={product.id}
-                className="flex flex-col rounded-2xl bg-white p-4 shadow-sm transition duration-300 hover:shadow-md dark:bg-card"
+                className="flex flex-col rounded-2xl bg-white p-4 shadow-sm transition duration-300 hover:shadow-md "
               >
                 <img
                   src={product.image}
