@@ -8,7 +8,7 @@ export function UserPage() {
     <div className="p-4">
       <h1 className="text-2xl font-bold">Users</h1>
       <CreateUserDialog open={isDialogOpen} onOpenChange={setIsDialogOpen} />
-      <Button onClick={() => setIsDialogOpen(true)}>Create a User</Button>
+      <Button className="mt-4" onClick={() => setIsDialogOpen(true)}>Create a User</Button>
     </div>
 
   )

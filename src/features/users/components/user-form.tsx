@@ -1,9 +1,8 @@
 import * as React from "react"
+import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { ResponsiveDialog } from "@/components/responsive-dialog"
-
-// TODO: step tracking on mobile screen. 
 
 const steps = [
   { title: "Info" },
@@ -16,7 +15,6 @@ const toggleOptions = ["Beginner", "Intermediate", "Advanced"]
 
 export function MultiStepDialog({ onSucess }: { onSucess?: () => void }) {
   const [currentStep, setCurrentStep] = React.useState(0)
-  const [submitted, setSubmitted] = React.useState(false)
 
   const [formData, setFormData] = React.useState({
     name: "",
@@ -70,34 +68,38 @@ export function MultiStepDialog({ onSucess }: { onSucess?: () => void }) {
 
   const handleSubmit = () => {
     if (validateStep()) {
-      console.log("Submitted:", formData)
-      setSubmitted(true)
       onSucess?.()
+      toast.success("Onboarding complete!", {
+        description: "Your profile has been submitted successfully.",
+      })
     }
   }
 
-  if (submitted) {
-    return (
-      <div className="text-center py-10">
-        <h2 className="text-xl font-semibold">✅ Success!</h2>
-        <p className="text-muted-foreground">
-          Your onboarding is complete.
-        </p>
-      </div>
-    )
-  }
+  const isStepValid = React.useMemo(() => {
+    if (currentStep === 0) {
+      return (
+        formData.name.trim() !== "" &&
+        /^\S+@\S+\.\S+$/.test(formData.email) &&
+        /^\d{10,15}$/.test(formData.phone)
+      )
+    }
+    if (currentStep === 1) {
+      return formData.tags.length > 0 && formData.toggle !== ""
+    }
+    return true
+  }, [currentStep, formData])
 
   return (
     <div className="w-full max-w-2xl mx-auto">
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-center sm:justify-start mb-6">
         {steps.map((step, index) => {
           const isActive = index === currentStep
           const isCompleted = index < currentStep
 
           return (
-            <div key={step.title} className="flex-1 flex items-center">
+            <div key={step.title} className="flex items-center sm:flex-1">
               <div
-                className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-medium
+                className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-medium shrink-0
                 ${isCompleted
                     ? "bg-primary text-white"
                     : isActive
@@ -118,7 +120,7 @@ export function MultiStepDialog({ onSucess }: { onSucess?: () => void }) {
               </span>
 
               {index < steps.length - 1 && (
-                <div className="flex-1 h-px bg-border mx-2" />
+                <div className="w-6 sm:flex-1 h-px bg-border mx-2" />
               )}
             </div>
           )
@@ -265,9 +267,9 @@ export function MultiStepDialog({ onSucess }: { onSucess?: () => void }) {
         )}
 
         {currentStep === steps.length - 1 ? (
-          <Button onClick={handleSubmit}>Submit</Button>
+          <Button onClick={handleSubmit} disabled={!isStepValid}>Submit</Button>
         ) : (
-          <Button onClick={handleNext}>Next</Button>
+          <Button onClick={handleNext} disabled={!isStepValid}>Next</Button>
         )}
       </div>
     </div>

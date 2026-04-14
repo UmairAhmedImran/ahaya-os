@@ -71,6 +71,9 @@ export const columns: ColumnDef<Transaction>[] = [
   {
     accessorKey: "status",
     header: "STATUS",
+    meta: {
+      className: "w-px whitespace-nowrap",
+    },
     cell: ({ row }) => {
       const status = row.original.status
       const config = statusConfig[status]

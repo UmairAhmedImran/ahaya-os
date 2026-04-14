@@ -23,15 +23,13 @@ export const ResponsiveDialog = ({
   if (isMobile) {
     return (
       <Drawer open={open} onOpenChange={onOpenChange}>
-        <DrawerContent>
-          <DrawerHeader>
+        <DrawerContent className="max-h-[90vh] flex flex-col">
+          <DrawerHeader className="shrink-0">
             <DrawerTitle>{title}</DrawerTitle>
             <DrawerDescription>{description}</DrawerDescription>
           </DrawerHeader>
-          <div className="p-4">{children}</div>
+          <div className="p-4 overflow-y-auto flex-1">{children}</div>
         </DrawerContent>
-
-
       </Drawer>
     )
   }

@@ -8,6 +8,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from "@/components/ui/sidebar"
 import logo from "@/assets/logo.svg"
 import { Separator } from "@/components/ui/separator"
@@ -22,6 +23,7 @@ import { Plus } from "lucide-react"
 
 export function AppSidebar() {
   const { pathname } = useLocation()
+  const { setOpenMobile } = useSidebar()
 
   const section = [
     {
@@ -82,7 +84,7 @@ export function AppSidebar() {
                         "hover:bg-indigo-100 hover:text-indigo-900"
                     )}
                   >
-                    <Link to={item.href}>
+                    <Link to={item.href} onClick={() => setOpenMobile(false)}>
                       <img src={item.icon} className="size-3.5" />
                       <span className="text-sm font-light tracking-tight">
                         {item.label}
