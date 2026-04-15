@@ -28,9 +28,9 @@ const allCards = [
 
 export function KpiCards() {
   return (
-    <div className="flex flex-col items-center gap-4 pt-8 px-4 sm:flex-row sm:justify-center sm:items-stretch sm:gap-6">
+    <div className="grid grid-cols-1 gap-4 pt-8 px-4 sm:grid-cols-3">
       {allCards.map((item, index) => (
-        <Card key={index} className="w-full max-w-sm">
+        <Card key={index} className="w-full">
           <CardHeader>
             <CardTitle>
               <img src={item.icon} />
