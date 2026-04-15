@@ -20,8 +20,6 @@ Start the development server:
 pnpm dev
 ```
 
-One Thing to note is that the code has dark theme also but proper styling on it is not done yet. So use "d" to change the theme to light mode.
-
-Things to do: 
-In User page create a button to open a multi step form using zod and maybe react-hook-form. (Task 2)
-Add search functionality to home page and use debounce and abrot.controller logic on it. (Task 3)
+Task 1 is covered in / page.
+Task 2 is covered in /users page.
+Task 3 is covered in /analytics page.
